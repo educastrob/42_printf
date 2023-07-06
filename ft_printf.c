@@ -30,9 +30,3 @@ int	ft_printf(const char *formatString, ...)
 	va_end(ap);
 	return (len);
 }
-
-int	main()
-{
-	
-	return 0;
-}
