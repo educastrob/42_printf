@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 08:56:42 by edcastro          #+#    #+#             */
-/*   Updated: 2023/07/11 09:03:58 by edcastro         ###   ########.fr       */
+/*   Created: 2023/07/11 09:00:31 by edcastro          #+#    #+#             */
+/*   Updated: 2023/07/11 17:33:25 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putstr(char *s)
+int		ft_putnbr(int n, char *s, int i, int flagCheck)
 {
-	int		i;
+	int		count;
 
-	if (!s)
-		return (ft_putstr("(null)"));
-	i = 0;
-	while (s[i])
+	count = 0;
+	if (n >= 0 && flagCheck == 1 && (s[i - 1] == ' ' 
+			|| s[i - 1] == '+'))
+		count += ft_putchar(s[i - 1]);
+	if (n < 0)
 	{
-		ft_putchar(s[i]);
-		i++;
+		count += ft_putchar('-');
+		n *= -1;
 	}
-	return (i);
+	if (n > 9)
+		count += ft_putnbr(n / 10, s, i, flagCheck);
+	count += ft_putchar((n % 10) + '0');
+	return (count);
 }
