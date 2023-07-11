@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:34:00 by edcastro          #+#    #+#             */
-/*   Updated: 2023/07/08 22:45:26 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/07/11 09:47:45 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ static int	convert_format(va_list ap, const char *formatString)
 
 	len = 0;
 	if (*formatString == '%')
-		len = len + ft_putchar('%');
+		len += ft_putchar('%');
 	else if (*formatString == 'c')
-		len = len + ft_putchar((char) va_arg(ap, int));
+		len += ft_putchar((char) va_arg(ap, int));
 	else if (*formatString == 's')
-		len = len + ft_putstr(va_arg(ap, char *));
-	else if (*formatString == 'd')
-		len = len + ft_putnbr(va_arg(ap, int));
-	else if (*formatString == 'i')
-		len = len + ft_putnbr(va_arg(ap, int));
+		len += ft_putstr(va_arg(ap, char *));
+	else if (*formatString == 'd' || *formatString == 'i')
+		len += ft_putnbr(va_arg(ap, int));
 	else if (*formatString == 'u')
-		len = len + ft_putnbr(va_arg(ap, unsigned int));
+		len += ft_putnbr(va_arg(ap, unsigned int));
 	return (len);
 }
 
@@ -47,10 +45,10 @@ int	ft_printf(const char *formatString, ...)
 		if (*formatString == '%')
 		{
 			formatString++;
-			len = len + convert_format(ap, formatString);
+			len += convert_format(ap, formatString);
 		}
 		else
-			len = len + ft_putchar(*formatString);
+			len += ft_putchar(*formatString);
 		formatString++;
 	}
 	va_end(ap);
