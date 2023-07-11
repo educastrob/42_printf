@@ -6,12 +6,11 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:34:00 by edcastro          #+#    #+#             */
-/*   Updated: 2023/07/11 09:47:45 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:30:24 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static int	convert_format(va_list ap, const char *formatString)
 {
@@ -55,6 +54,7 @@ int	ft_printf(const char *formatString, ...)
 	return (len);
 }
 
+#include <stdio.h>
 int main(void)
 {
 	printf("%u\n", 123);
