@@ -6,7 +6,7 @@
 #    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/04 18:34:09 by edcastro          #+#    #+#              #
-#    Updated: 2023/07/11 09:48:35 by edcastro         ###   ########.fr        #
+#    Updated: 2023/07/11 09:57:23 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ all: $(NAME)
 		$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJS)
-		ar rcs $(NAME) $(OBJS)
+		ar -rcs $(NAME) $(OBJS)
 
 bonus: all
 
