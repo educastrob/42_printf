@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:34:05 by edcastro          #+#    #+#             */
-/*   Updated: 2023/07/11 17:36:56 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:28:39 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printf(const char *formatStr, ...);
+int	ft_printf(const char *fmtStr, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_putuint(unsigned int n);
 int	ft_putptr(unsigned long n, char *base);
-int	ft_putnbr(int n, char *s, int i, int flagCheck);
+int	ft_putnbr(long n, char *s, int i, int flagCheck);
 int	ft_puthex(unsigned int n, char *s, int i, int hashCheck);
 
 #endif

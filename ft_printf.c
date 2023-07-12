@@ -6,78 +6,59 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:34:00 by edcastro          #+#    #+#             */
-/*   Updated: 2023/07/11 17:37:57 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:34:25 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	convert_format(va_list ap, char *formatStr, int i)
+static int	convert_format(va_list ap, char *fmtStr, int i)
 {
 	int	len;
 
 	len = 0;
-	if (formatStr[i] == '%')
+	if (fmtStr[i] == '%')
 		len += ft_putchar('%');
-	else if (formatStr[i] == 'c')
+	else if (fmtStr[i] == 'c')
 		len += ft_putchar((char) va_arg(ap, int));
-	else if (formatStr[i] == 's')
+	else if (fmtStr[i] == 's')
 		len += ft_putstr(va_arg(ap, char *));
-	else if (formatStr[i] == 'u')
+	else if (fmtStr[i] == 'u')
 		len += ft_putuint(va_arg(ap, unsigned int));
-	else if (formatStr[i] == 'p')
+	else if (fmtStr[i] == 'p')
 		len += ft_putptr(va_arg(ap, unsigned long), HEX_LOWER);
-	else if (formatStr[i] == 'd' || formatStr[i] == 'i')
-		len += ft_putnbr(va_arg(ap, int), formatStr, i, 1);
-	else if (formatStr[i] == 'x' || formatStr[i] == 'X')
-		len += ft_puthex(va_arg(ap, unsigned int), formatStr, i, 1);
+	else if (fmtStr[i] == 'd' || fmtStr[i] == 'i')
+		len += ft_putnbr(va_arg(ap, int), fmtStr, i, 1);
+	else if (fmtStr[i] == 'x' || fmtStr[i] == 'X')
+		len += ft_puthex(va_arg(ap, unsigned int), fmtStr, i, 1);
 	return (len);
 }
 
-int	ft_printf(const char *formatStr, ...)
+int	ft_printf(const char *fmtStr, ...)
 {
 	int		i;
 	int		len;
 	va_list	ap;
 
-	i = 0;
+	i = -1;
 	len = 0;
-	if (!formatStr)
+	if (!fmtStr)
 		return (-1);
-	va_start(ap, formatStr);
-	while (formatStr[i] != '\0')
+	va_start(ap, fmtStr);
+	while (fmtStr[++i] != '\0')
 	{
-		if (formatStr[i] == '%')
+		if (fmtStr[i] == '%')
 		{
 			i++;
-			len += convert_format(ap, (char *)formatStr, i);
+			while (fmtStr[i] != 'c' && fmtStr[i] != 's' && fmtStr[i] != 'p'
+				&& fmtStr[i] != 'd' && fmtStr[i] != 'i' && fmtStr[i] != 'u'
+				&& fmtStr[i] != 'x' && fmtStr[i] != 'X' && fmtStr[i] != '%')
+				i++;
+			len += convert_format(ap, (char *)fmtStr, i);
 		}
 		else
-			len += ft_putchar(formatStr[i]);
-		i++;
+			len += ft_putchar(fmtStr[i]);
 	}
 	va_end(ap);
 	return (len);
 }
-
-// #include <stdio.h>
-// int main(void)
-// {
-// 	int	count;
-	
-// 	printf("\nFT PRINTF:\n");
-// 	count =	ft_printf("hex(x):%x\n", 0);
-// 	printf("return value: %d\n", count);
-// 	printf("ORIGINAL PRINTF:\n");
-// 	count = printf("hex(x):%x\n", 0);
-// 	printf("return value: %d\n", count);
-
-// 	printf("\nFT PRINTF:\n");
-// 	count =	ft_printf("hex(X):%X %X %X\n", 0, -65, 65);
-// 	printf("return value: %d\n", count);
-// 	printf("ORIGINAL PRINTF:\n");
-// 	count = printf("hex(X):%X %X %X\n", 0, -65, 65);
-// 	printf("return value: %d\n", count);
-	
-// 	return (0);
-// }

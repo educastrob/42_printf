@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 11:09:35 by edcastro          #+#    #+#             */
-/*   Updated: 2023/07/11 16:43:44 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:31:55 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 static int	ft_put_hexlong(unsigned long n, char *base)
 {
-	int		retPointer;
+	int	count_pointer;
 
-	retPointer = 0;
+	count_pointer = 0;
 	if (n >= 16)
-		retPointer += ft_put_hexlong(n / 16, base);
-	retPointer += ft_putchar(base[n % 16]);
-	return (retPointer);
+		count_pointer += ft_put_hexlong(n / 16, base);
+	count_pointer += ft_putchar(base[n % 16]);
+	return (count_pointer);
 }
 
 int	ft_putptr(unsigned long n, char *base)
 {
-	int		retPointer;
+	int	count_pointer;
 
-	retPointer = 0;
+	count_pointer = 0;
 	if (n == 0)
 	{
 		ft_putstr("(nil)");
 		return (5);
 	}
-	retPointer += ft_putstr("0x");
-	retPointer += ft_put_hexlong(n, base);
-	return (retPointer);
+	count_pointer += ft_putstr("0x");
+	count_pointer += ft_put_hexlong(n, base);
+	return (count_pointer);
 }
