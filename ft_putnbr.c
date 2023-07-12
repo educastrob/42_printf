@@ -6,7 +6,7 @@
 /*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 09:00:31 by edcastro          #+#    #+#             */
-/*   Updated: 2023/07/12 11:33:03 by edcastro         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:58:01 by edcastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_putnbr(long n, char *s, int i, int flagCheck)
 	count = 0;
 	if (n >= 0 && flagCheck == 1 && (s[i - 1] == ' '
 			|| s[i - 1] == '+'))
-		count += ft_putchar(s[i - 1]);
+			count += ft_putchar(s[i - 1]);
+	flagCheck = 0;
 	if (n < 0)
 	{
 		count += ft_putchar('-');

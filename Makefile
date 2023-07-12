@@ -6,7 +6,7 @@
 #    By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/04 18:34:09 by edcastro          #+#    #+#              #
-#    Updated: 2023/07/12 13:24:38 by edcastro         ###   ########.fr        #
+#    Updated: 2023/07/12 17:55:03 by edcastro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,4 +36,6 @@ clean:
 fclean: clean
 	rm -f $(NAME) 
 
-re: fclean all
+bonus: all
+
+re: fclean all bonus
