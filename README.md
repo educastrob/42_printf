@@ -56,7 +56,7 @@
 </tbody>
 </table>
 <table>
-<h3>Bonux</h3>
+<h3>Bonus</h3>
 <thead>
   <tr>
     <th>Flags</th>
